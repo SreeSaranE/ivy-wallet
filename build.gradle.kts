@@ -1,4 +1,16 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        // Google Services plugin for Firebase
+        classpath("com.google.gms:google-services:4.4.0")
+    }
+}
+
 plugins {
     // Run with:
     // ./gradlew detekt // Simple report in the console
@@ -7,7 +19,6 @@ plugins {
     id("com.jraska.module.graph.assertion")
 
     alias(libs.plugins.gradleWrapperUpgrade)
-
     alias(libs.plugins.koverPlugin)
 }
 
@@ -29,6 +40,13 @@ subprojects {
                 }
             }
         }
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
     }
 }
 

@@ -6,7 +6,7 @@ plugins {
     id("dagger.hilt.android.plugin")
     id("org.jetbrains.kotlin.plugin.serialization")
     id("com.google.devtools.ksp")
-    id("com.google.gms.google-services")
+    id("com.google.gms.google-services")      // Firebase plugin
     id("com.google.firebase.crashlytics")
     id("io.gitlab.arturbosch.detekt")
 }
@@ -23,9 +23,7 @@ android {
         versionCode = libs.versions.version.code.get().toInt()
     }
 
-    androidResources {
-        generateLocaleConfig = true
-    }
+    androidResources { generateLocaleConfig = true }
 
     signingConfigs {
         getByName("debug") {
@@ -51,24 +49,18 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-
             isDebuggable = false
             isDefault = false
-
             signingConfig = signingConfigs.getByName("release")
-
             resValue("string", "app_name", "Ivy Wallet")
         }
 
         debug {
             isMinifyEnabled = false
             isShrinkResources = false
-
             isDebuggable = true
             isDefault = true
-
             signingConfig = signingConfigs.getByName("debug")
-
             applicationIdSuffix = ".debug"
             resValue("string", "app_name", "Ivy Wallet Debug")
         }
@@ -80,24 +72,17 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-
             matchingFallbacks.add("release")
-
             isDebuggable = false
             isDefault = false
-
             signingConfig = signingConfigs.getByName("debug")
-
-            applicationIdSuffix = ".debug"
-            resValue("string", "app_name", "Ivy Wallet")
+            applicationIdSuffix = ".demo"
+            resValue("string", "app_name", "Ivy Wallet Demo")
         }
     }
 
     val javaVersion = libs.versions.jvm.target.get()
-    kotlinOptions {
-        jvmTarget = javaVersion
-    }
-
+    kotlinOptions { jvmTarget = javaVersion }
     compileOptions {
         sourceCompatibility = JavaVersion.valueOf("VERSION_$javaVersion")
         targetCompatibility = JavaVersion.valueOf("VERSION_$javaVersion")
@@ -145,7 +130,6 @@ dependencies {
     implementation(projects.feature.search)
     implementation(projects.feature.settings)
     implementation(projects.feature.transactions)
-    implementation(projects.feature.poll.impl)
     implementation(projects.shared.base)
     implementation(projects.shared.data.core)
     implementation(projects.shared.domain)
@@ -185,4 +169,15 @@ dependencies {
     testImplementation(libs.androidx.work.testing)
 
     lintChecks(libs.slack.lint.compose)
+
+    // Firebase Firestore & Auth
+    implementation(platform("com.google.firebase:firebase-bom:32.2.2"))
+    implementation("com.google.firebase:firebase-firestore-ktx")
+    implementation("com.google.firebase:firebase-auth-ktx")
+
+    // Coroutines support for Firebase Tasks
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3")
 }
+
+// The plugin is already applied via Kotlin DSL, can remove if duplicate
+// apply plugin: 'com.google.gms.google-services'
