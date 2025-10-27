@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "147079188819",
+    "project_id": "ivy-wallet-5c20e",
+    "storage_bucket": "ivy-wallet-5c20e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:147079188819:android:dcff1b7c3f28bc7b4b11a6",
+        "android_client_info": {
+          "package_name": "com.ivy.wallet"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvhMgWvCEwKsJwpgTLGwbmf4rgdlR2rVg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

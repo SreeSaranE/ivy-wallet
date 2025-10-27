@@ -13,4 +13,6 @@ dependencies {
     implementation(projects.shared.ui.navigation)
 
     testImplementation(projects.shared.ui.testing)
+
+    implementation("com.google.android.material:material:1.12.0")
 }

@@ -42,25 +42,6 @@
           "other_platform_oauth_client": []
         }
       }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:147079188819:android:b4ffbdd5aa862f204b11a6",
-        "android_client_info": {
-          "package_name": "com.ivy.wallet.demo"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCvhMgWvCEwKsJwpgTLGwbmf4rgdlR2rVg"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
     }
   ],
   "configuration_version": "1"
